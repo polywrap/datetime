@@ -1,39 +1,25 @@
-import { PolywrapClient } from "@polywrap/client-js";
-import { dateTimePlugin } from "../../plugin/build";
+import { PolywrapClient, ClientConfigBuilder } from "@polywrap/client-js";
+import { dateTimePlugin } from "../../plugin";
 import path from "path"
 
 jest.setTimeout(360000);
 
 describe("e2e", () => {
+  const config = new ClientConfigBuilder().addDefaults().addPackage("ens/datetime.polywrap.eth", dateTimePlugin()).build();
+  const client: PolywrapClient = new PolywrapClient(config);
 
-  let client: PolywrapClient;
-  let uri: string;
-
-  beforeAll(async () => {
-      // Create the client w/ test env configuration + the dateTimePlugin
-      client = new PolywrapClient({
-        plugins: [{
-          uri: "ens/datetime.polywrap.eth",
-          plugin: dateTimePlugin({}),
-        }],
-      })
-
-    // Get path to wrapper and create filesystem uri
-    const wrapperPath: string = path.join(path.resolve(__dirname), "..");
-    uri = `wrap://fs/${wrapperPath}/build`;
-  });
+  const wrapperPath: string = path.join(path.resolve(__dirname), "..");
+  const uri = `wrap://fs/${wrapperPath}/build`;
 
   it("gets current datetime", async () => {
-    // Query the polywrapper, which will
-    // in turn query the dateTimePlugin
-    const { data, error } = await client.invoke<string>({
+    const result = await client.invoke<string>({
       uri,
       method: "currentTimestamp"
     });
 
-    expect(error).toBeFalsy();
-    expect(data).toBeTruthy();
-    expect (Number.parseInt(data!)).toBeGreaterThanOrEqual(Date.now() - 300000);
-    expect(Number.parseInt(data!)).toBeLessThanOrEqual(Date.now());
+    if (!result.ok) throw result.error;
+    expect(result.value).toBeTruthy();
+    expect(Number.parseInt(result.value)).toBeGreaterThanOrEqual(Date.now() - 300000);
+    expect(Number.parseInt(result.value)).toBeLessThanOrEqual(Date.now());
   });
 });

@@ -1,22 +1,10 @@
-import { PolywrapClient } from "@polywrap/client-js";
+import { ClientConfigBuilder, PolywrapClient } from "@polywrap/client-js";
 import { dateTimePlugin } from "../";
 
 describe("e2e", () => {
-
-  let client: PolywrapClient;
   const uri = "ens/datetime.polywrap.eth";
-
-  beforeAll(() => {
-    // Add the dateTimePlugin to the PolywrapClient
-    client = new PolywrapClient({
-      plugins: [
-        {
-          uri: uri,
-          plugin: dateTimePlugin({})
-        }
-      ]
-    });
-  });
+  const config = new ClientConfigBuilder().addPackage(uri, dateTimePlugin()).build();
+  const client: PolywrapClient = new PolywrapClient(config);
 
   it("retrieves current datetime", async () => {
     const result = await client.invoke({

@@ -1,8 +1,10 @@
-format: 0.1.0
-name: DateTime
-language: wasm/assemblyscript
-schema: ./src/schema.graphql
-module: ./src/index.ts
-import_redirects:
-  - uri: ens/datetime.polywrap.eth
-    schema: ../plugin/build/schema.graphql
+format: 0.3.0
+project:
+  name: DateTime
+  type: wasm/assemblyscript
+source:
+  schema: ./src/schema.graphql
+  module: ./src/index.ts
+  import_abis:
+    - uri: ens/datetime.polywrap.eth
+      abi: ../plugin/src/schema.graphql

@@ -1,23 +1,15 @@
 import { Module, Args_currentTimestamp, manifest } from "./wrap";
 
-import { PluginFactory } from "@polywrap/core-js";
+import { PluginFactory, PluginPackage } from "@polywrap/plugin-js";
 
-export class DateTimePlugin extends Module<{}> {
+type NoConfig = Record<string, never>;
 
-  constructor(config: {}) {
-    super(config);
-  }
-
+export class DateTimePlugin extends Module<NoConfig> {
   public currentTimestamp(_: Args_currentTimestamp): string {
     return Date.now().toString();
   }
 }
 
-export const dateTimePlugin: PluginFactory<{}> = () => {
-  return {
-    factory: () => new DateTimePlugin({}),
-    manifest,
-  };
-};
+export const dateTimePlugin: PluginFactory<NoConfig> = () => new PluginPackage(new DateTimePlugin({}), manifest)
 
 export const plugin = dateTimePlugin;
