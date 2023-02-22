@@ -3,7 +3,7 @@ import { dateTimePlugin } from "../";
 
 describe("e2e", () => {
   const uri = "ens/datetime.polywrap.eth";
-  const config = new ClientConfigBuilder().addPackage(uri, dateTimePlugin()).build();
+  const config = new ClientConfigBuilder().addPackage(uri, dateTimePlugin({})).build();
   const client: PolywrapClient = new PolywrapClient(config);
 
   it("retrieves current datetime", async () => {

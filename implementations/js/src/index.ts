@@ -10,6 +10,9 @@ export class DateTimePlugin extends Module<NoConfig> {
   }
 }
 
-export const dateTimePlugin: PluginFactory<NoConfig> = () => new PluginPackage(new DateTimePlugin({}), manifest)
+export const dateTimePlugin: PluginFactory<NoConfig> = () => new PluginPackage(
+  new DateTimePlugin({}),
+  manifest
+);
 
 export const plugin = dateTimePlugin;

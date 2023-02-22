@@ -1,12 +1,13 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
     "lib": [
-      "es2020",
       "es2015",
       "es5",
       "dom"
     ],
-    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
     "moduleResolution": "node",
     "declaration": true,
     "preserveSymlinks": true,
@@ -23,11 +24,10 @@
     "resolveJsonModule": true,
     "strictNullChecks": true
   },
-  "typeAcquisition": { "include": ["jest"] },
   "include": [
-    "./tests/**/*.ts"
+    "./src/**/*.ts"
   ],
   "exclude": [
-    "./src/**/*.ts"
+    "./**/.polywrap/**/*.ts"
   ]
 }
