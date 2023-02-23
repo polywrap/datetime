@@ -17,7 +17,8 @@
     "lint": "eslint --color -c ./.eslintrc.js src/",
     "test": "jest --passWithNoTests --runInBand --verbose",
     "test:ci": "jest --passWithNoTests --runInBand --verbose",
-    "test:watch": "jest --watch --passWithNoTests --verbose"
+    "test:watch": "jest --watch --passWithNoTests --verbose",
+    "publish:npm": "yarn publish --access public --non-interactive --verbose"
   },
   "dependencies": {
     "@polywrap/core-js": "0.10.0-pre.8",
