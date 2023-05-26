@@ -1,8 +1,122 @@
 type Module {
-  """
-  Returns the numeric value corresponding to the current time—the
-  number of milliseconds elapsed since January 1, 1970 00:00:00 UTC,
-  with leap seconds ignored.
-  """
-  currentTimestamp: BigInt!
+    """
+    Returns a Datetime object representing the current date and time.
+    """
+    now: Datetime
+
+    """
+    Calculates the difference between the Datetime instance and another Datetime instance provided as the 'other' parameter.
+    Returns a new Datetime object representing the absolute difference between the two.
+    """
+    diff(other: Datetime!): Datetime!
+
+    """
+    Formats the provided Datetime object into a String according to the formatting rules specified by the 'fmt' parameter.
+    """
+    format(datetime: Datetime!, fmt: String): String!
+
+    """
+    Parses a string representing a date and time, according to the formatting rules specified by the 'fmt' parameter, into a Datetime object.
+    """
+    parse(datetimeStr: String!, fmt: String): Datetime!
+
+    """
+    Adds a specified Duration to the Datetime instance, and returns a new Datetime object representing the result.
+    """
+    add(duration: Duration!): Datetime!
+
+    """
+    Subtracts a specified Duration from the Datetime instance, and returns a new Datetime object representing the result.
+    """
+    subtract(duration: Duration!): Datetime!
+
+    """
+    Converts the Datetime instance into a Unix timestamp (the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC, excluding leap seconds) and returns it.
+    """
+    toUnixTimestamp: UInt!
+
+    """
+    Creates a new Datetime object from a Unix timestamp (the number of seconds that have elapsed since 1970-01-01 00:00:00 UTC, excluding leap seconds).
+    """
+    fromUnixTimestamp(timestamp: UInt!): Datetime
+}
+
+"""
+Defines the structure of a date and time object in the Gregorian calendar.
+"""
+type Datetime {
+    """
+    The year component of the date.
+    """
+    year: Int!
+
+    """
+    The month component of the date. Ranges from 1 to 12.
+    """
+    month: Int!
+
+    """
+    The day component of the date. Ranges from 1 to 31.
+    """
+    day: Int!
+
+    """
+    The hour component of the time. Ranges from 0 to 23.
+    """
+    hour: Int!
+
+    """
+    The minute component of the time. Ranges from 0 to 59.
+    """
+    minute: Int!
+
+    """
+    The second component of the time. Ranges from 0 to 59.
+    """
+    second: Int!
+
+    """
+    The millisecond component of the time. Ranges from 0 to 999.
+    """
+    millisecond: Int!
+}
+
+"""
+Defines the structure of a duration of time.
+"""
+type Duration {
+    """
+    The number of years in the duration.
+    """
+    years: Int
+
+    """
+    The number of months in the duration.
+    """
+    months: Int
+
+    """
+    The number of days in the duration.
+    """
+    days: Int
+
+    """
+    The number of hours in the duration.
+    """
+    hours: Int
+
+    """
+    The number of minutes in the duration.
+    """
+    minutes: Int
+
+    """
+    The number of seconds in the duration.
+    """
+    seconds: Int
+
+    """
+    The number of milliseconds in the duration.
+    """
+    milliseconds: Int
 }
