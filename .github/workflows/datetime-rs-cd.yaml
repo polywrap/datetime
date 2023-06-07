@@ -1,0 +1,15 @@
+name: datetime-plugin-rs-cd
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+    paths:
+      - "implementations/rs/**"
+
+jobs:
+  release:
+    uses: polywrap/plugin-workflows/.github/workflows/rs-cd.yaml@main
+    with:
+      WORKING_DIRECTORY: ./implementations/rs
