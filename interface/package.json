@@ -1,7 +1,7 @@
 {
   "name": "@polywrap/datetime-interface",
   "description": "Polywrap Datetime Interface",
-  "version": "1.0.0-pre.0",
+  "version": "1.0.0",
   "scripts": {
     "build": "npx polywrap build",
     "deploy": "npx polywrap deploy -o deployment.json"

@@ -1,6 +1,6 @@
 {
   "name": "@polywrap/datetime-plugin-js",
-  "description": "Polywrap Datetime Javascript Plugin",
+  "description": "Polywrap Datetime Plugin",
   "version": "0.10.1",
   "license": "MIT",
   "repository": {
