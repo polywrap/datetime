@@ -6,7 +6,7 @@
       "codegen": "npx polywrap codegen"
     },
     "devDependencies": {
-      "polywrap": "0.10.3"
+      "polywrap": "0.10.5"
     }
   }
   
