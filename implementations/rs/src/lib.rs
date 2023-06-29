@@ -1,7 +1,7 @@
 use crate::wrap::wrap_info::get_manifest;
 use chrono::Utc;
 use polywrap_core::invoker::Invoker;
-use polywrap_plugin::{error::PluginError, implementor::plugin_impl, BigInt, JSON};
+use polywrap_plugin::{error::PluginError, implementor::plugin_impl};
 use std::sync::Arc;
 use wrap::module::{ArgsCurrentTimestamp, Module};
 
@@ -29,10 +29,15 @@ mod test {
     use chrono::Utc;
     use polywrap_client::client::PolywrapClient;
     use polywrap_core::{client::ClientConfig, uri::Uri};
+    use polywrap_msgpack_serde::to_vec;
     use polywrap_plugin::package::PluginPackage;
     use polywrap_resolvers::static_resolver::{StaticResolver, StaticResolverLike};
+    use serde::Serialize;
 
-    use crate::DatetimePlugin;
+    use crate::{wrap::module::ArgsCurrentTimestamp, DatetimePlugin};
+
+    #[derive(Serialize)]
+    pub struct CurrentTimestampArgs {}
 
     #[test]
     fn retrieves_current_datetime() {
@@ -51,7 +56,13 @@ mod test {
             envs: None,
         });
 
-        let response = client.invoke::<String>(&uri, "currentTimestamp", None, None, None);
+        let response = client.invoke::<String>(
+            &uri,
+            "currentTimestamp",
+            Some(&to_vec(&ArgsCurrentTimestamp {}).unwrap()),
+            None,
+            None,
+        );
         assert_eq!(response.unwrap(), Utc::now().timestamp().to_string())
     }
 }
