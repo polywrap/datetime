@@ -18,7 +18,8 @@
     "test": "jest --passWithNoTests --runInBand --verbose",
     "test:ci": "jest --passWithNoTests --runInBand --verbose",
     "test:watch": "jest --watch --passWithNoTests --verbose",
-    "publish:npm": "yarn publish --access public --non-interactive --verbose"
+    "publish:npm": "yarn publish --access public --non-interactive --verbose",
+    "publish:pre:npm": "yarn publish --access public --non-interactive --verbose --tag pre"
   },
   "dependencies": {
     "@polywrap/core-js": "~0.12.0-pre.0",
