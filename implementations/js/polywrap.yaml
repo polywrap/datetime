@@ -1,10 +1,10 @@
-format: 0.3.0
+format: 0.4.0
 project:
   type: plugin/typescript
   name: Datetime
 source:
   module: ./src/index.ts
-  schema: ./schema.graphql
+  schema: ./polywrap.graphql
   import_abis:
-    - uri: "ens/wraps.eth:datetime@1.0.0"
+    - uri: "wrapscan.io/polywrap/datetime@1.0"
       abi: ../../interface/polywrap.graphql
