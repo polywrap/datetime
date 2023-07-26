@@ -1,0 +1,3 @@
+#import { Module } into Datetime from "wrapscan.io/polywrap/datetime@1.0"
+
+type Module implements Datetime_Module { }

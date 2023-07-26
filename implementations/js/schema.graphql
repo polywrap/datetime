@@ -1,3 +1,0 @@
-#import { Module } into Datetime from "ens/wraps.eth:datetime@1.0.0"
-
-type Module implements Datetime_Module { }
