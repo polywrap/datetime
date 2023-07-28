@@ -6,14 +6,14 @@ description = "Polywrap rust datetime plugin"
 edition = "2021"
 
 [dependencies]
-polywrap_core = { version = "0.1.6-beta" }
-polywrap_plugin = { version = "0.1.6-beta" }
-polywrap_resolvers = { version = "0.1.6-beta" }
-wrap_manifest_schemas = { version = "0.1.6-beta" }
-polywrap_msgpack_serde = "0.0.1"
+polywrap_core = { version = "0.1.6-beta.13" }
+polywrap_plugin = { version = "0.1.6-beta.13" }
+polywrap_resolvers = { version = "0.1.6-beta.13" }
+wrap_manifest_schemas = { version = "0.1.6-beta.13" }
+polywrap_msgpack_serde = "0.0.2-beta.5"
 
 chrono = "0.4"
 serde = {version = "1.0.145", features = ["derive"]}
 
 [dev-dependencies]
-polywrap_client = { version = "0.1.6-beta" }
+polywrap_client = { version = "0.1.6-beta.13" }

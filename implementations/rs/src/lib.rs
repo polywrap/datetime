@@ -3,7 +3,7 @@ use chrono::Utc;
 use polywrap_core::invoker::Invoker;
 use polywrap_plugin::{error::PluginError, implementor::plugin_impl};
 use std::sync::Arc;
-use wrap::module::{ArgsCurrentTimestamp, Module};
+use wrap::{module::{ArgsCurrentTimestamp, Module}, types::BigInt};
 
 pub mod wrap;
 
@@ -16,7 +16,7 @@ impl Module for DatetimePlugin {
         &mut self,
         _: &ArgsCurrentTimestamp,
         _: Arc<dyn Invoker>,
-    ) -> Result<String, PluginError> {
+    ) -> Result<BigInt, PluginError> {
         let now = Utc::now().timestamp();
         Ok(now.to_string())
     }
@@ -42,7 +42,7 @@ mod test {
     #[test]
     fn retrieves_current_datetime() {
         let datetime_plugin = DatetimePlugin {};
-        let plugin_pkg: PluginPackage = datetime_plugin.into();
+        let plugin_pkg: PluginPackage<DatetimePlugin> = datetime_plugin.into();
         let package = Arc::new(plugin_pkg);
 
         let uri = Uri::try_from("plugin/datetime").unwrap();
