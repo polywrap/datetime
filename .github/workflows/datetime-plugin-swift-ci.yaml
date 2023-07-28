@@ -16,7 +16,6 @@ jobs:
 
       - name: Build Pod
         run: pod spec lint --allow-warnings --verbose
-        working-directory: ./implementations/swift
 
       - name: Test
         run: swift test

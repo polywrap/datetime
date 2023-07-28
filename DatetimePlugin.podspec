@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'DatetimePlugin'
-    s.version          = '0.0.1'
+    s.version          = '0.0.2'
     s.summary          = 'Datetime wallet plugin'
     s.homepage         = 'https://github.com/polywrap/datetime'
     s.license          = 'MIT'
@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
     s.osx.deployment_target = '10.15'
     s.source = { :git => "https://github.com/polywrap/datetime.git", :branch => 'feat/swift-implementation' }
     s.static_framework = true
-    s.dependency 'PolywrapClient', '~> 0.0.4'
+    s.dependency 'PolywrapClient', '~> 0.0.5'
   end
