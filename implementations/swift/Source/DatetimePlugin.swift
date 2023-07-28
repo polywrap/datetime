@@ -11,7 +11,7 @@ public class DatetimePlugin: Plugin {
     }
 }
 
-func getDatetimePlugin() -> Plugin {
+public func getDatetimePlugin() -> Plugin {
     var plugin = DatetimePlugin()
     plugin.addMethod(name: "currentTimestamp", closure: plugin.currentTimestamp)
     return plugin
