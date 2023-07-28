@@ -32,5 +32,6 @@ let package = Package(
             dependencies: ["DatetimePlugin"],
             path: "Tests"
         ),
-    ]
+    ],
+    swiftLanguageVersions: [.v5]
 )
