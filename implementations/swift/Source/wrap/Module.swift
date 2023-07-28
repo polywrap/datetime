@@ -8,6 +8,6 @@ public struct ArgsCurrentTimestamp: Codable {
 }
 
 
-protocol Plugin: PluginModule {
+public protocol Plugin: PluginModule {
     func currentTimestamp(_ args: ArgsCurrentTimestamp, _ env: VoidCodable?, _ invoker: Invoker) throws -> String
 }
